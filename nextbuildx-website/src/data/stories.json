@@ -1,0 +1,23 @@
+[
+  {
+    "id": "1",
+    "title": "Ravi's Harvest",
+    "description": "How a new irrigation channel doubled crop yields for a family of 5.",
+    "metric": "Yield +50%",
+    "image": "/images/story-ravi.jpg"
+  },
+  {
+    "id": "2",
+    "title": "Sunita Goes to School",
+    "description": "Safe roads mean 50 girls now attend high school regularly.",
+    "metric": "Attendance +80%",
+    "image": "/images/story-sunita.jpg"
+  },
+  {
+    "id": "3",
+    "title": "Clean Energy, Clean Air",
+    "description": "Biogas plants reduced indoor smoke for 20 households.",
+    "metric": "Health Improved",
+    "image": "/images/story-energy.jpg"
+  }
+]

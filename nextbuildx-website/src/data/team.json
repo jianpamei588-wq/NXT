@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "name": "Aarav Sharma",
+    "role": "Project Lead",
+    "bio": "Civil Engineering student passionate about sustainable rural infrastructure.",
+    "image": "/images/team-1.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Meera Patel",
+    "role": "Community Outreach",
+    "bio": "Social Work major with 3 years of field experience in rural education.",
+    "image": "/images/team-2.jpg"
+  }
+]

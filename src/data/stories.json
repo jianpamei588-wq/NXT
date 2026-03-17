@@ -1,0 +1,23 @@
+[
+  {
+    "id": "safety-first",
+    "title": "Saving Lives through Technology",
+    "description": "Our primary vision is to deploy low-cost sensors that give rural communities enough time to evacuate before a landslide occurs.",
+    "metric": "Goal: Zero Fatalities",
+    "image": "/images/vision-safety.jpg"
+  },
+  {
+    "id": "resilient-infrastructure",
+    "title": "Protecting Hilly Roads",
+    "description": "By monitoring soil stability, we aim to help local authorities maintain critical transport links that connect villages to hospitals.",
+    "metric": "Goal: Connectivity",
+    "image": "/images/vision-road.jpg"
+  },
+  {
+    "id": "community-empowerment",
+    "title": "Community-Led Response",
+    "description": "We are designing a system where local village heads receive SMS alerts, enabling immediate community action.",
+    "metric": "Goal: Rapid Response",
+    "image": "/images/vision-community.jpg"
+  }
+]

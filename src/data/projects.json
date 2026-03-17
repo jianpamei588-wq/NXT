@@ -1,0 +1,12 @@
+[
+  {
+    "id": "landslide-detection",
+    "title": "Early Landslide Detection System",
+    "summary": "Developing a low-cost, IoT-based sensor network to provide early warnings for landslides in vulnerable rural hilly regions.",
+    "location": "Northeast India (Proposed Pilot)",
+    "status": "In Development",
+    "image": "/images/project-landslide.jpg",
+    "timeline": "Phase 1: R&D (Current) | Phase 2: Pilot (Oct 2026)",
+    "outcome": "Providing real-time alerts to save lives and protect rural infrastructure."
+  }
+]

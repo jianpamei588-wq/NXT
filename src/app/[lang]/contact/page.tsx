@@ -2,6 +2,7 @@ import { getDictionary, Locale } from "@/lib/dictionary";
 import ContactForm from "@/components/ContactForm";
 import { Section } from "@/components/ui/Section";
 import { Mail, Phone, MapPin } from "lucide-react";
+import { Suspense } from "react";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "hi" }];
@@ -61,7 +62,9 @@ export default async function ContactPage({
         </div>
         
         <div className="bg-card p-6 md:p-8 rounded-lg border shadow-sm">
-             <ContactForm dict={dict} />
+             <Suspense fallback={<div className="h-64 flex items-center justify-center text-muted-foreground">Loading Form...</div>}>
+                <ContactForm dict={dict} />
+             </Suspense>
         </div>
       </div>
     </Section>

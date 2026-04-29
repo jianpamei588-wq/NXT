@@ -74,7 +74,13 @@ export default async function ProjectDetailPage({
                         <CheckCircle size={20} className="text-green-600" />
                         Key Outcomes
                     </h3>
-                    <p className="text-sm">{project.outcome}</p>
+                    <p className="text-sm mb-4">{project.outcome}</p>
+                    <Link 
+                        href={`/${lang}/get-involved?project=${encodeURIComponent(project.title)}`}
+                        className="inline-flex h-9 items-center justify-center rounded-md bg-secondary px-4 text-xs font-medium text-secondary-foreground shadow transition-colors hover:bg-secondary/90 w-full"
+                    >
+                        Volunteer for this Project
+                    </Link>
                 </div>
             </div>
         </div>

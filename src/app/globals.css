@@ -68,11 +68,48 @@
   }
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
   line-height: 1.6;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.reveal {
+  opacity: 0;
+}
+
+.reveal.active {
+  animation: fadeInUp 0.8s ease-out forwards;
 }
 
 /* Lite Mode Styles: High contrast, no shadows, simplified layout */
@@ -84,6 +121,7 @@ body {
   
   background: var(--background);
   color: var(--foreground);
+  scroll-behavior: auto;
 }
 
 .lite-mode img, 

@@ -5,10 +5,11 @@ import { useState } from "react";
 import { Menu, X, Globe, Zap } from "lucide-react";
 import { useLiteMode } from "./LiteModeProvider";
 import { cn } from "@/lib/utils";
+import { Dictionary } from "@/lib/dictionary";
 
 type HeaderProps = {
   lang: "en" | "hi";
-  dict: any;
+  dict: Dictionary;
 };
 
 export default function Header({ lang, dict }: HeaderProps) {
@@ -16,12 +17,12 @@ export default function Header({ lang, dict }: HeaderProps) {
   const { isLiteMode, toggleLiteMode } = useLiteMode();
 
   const navItems = [
-    { label: dict.nav.home, href: `/${lang}` },
-    { label: dict.nav.about, href: `/${lang}/about` },
-    { label: dict.nav.projects, href: `/${lang}/projects` },
-    { label: dict.nav.impact, href: `/${lang}/impact` },
-    { label: dict.nav.blog, href: `/${lang}/blog` },
-    { label: dict.nav.contact, href: `/${lang}/contact` },
+    { label: dict.nav.home, href: `/${lang}#home` },
+    { label: dict.nav.about, href: `/${lang}#about` },
+    { label: dict.nav.projects, href: `/${lang}#projects` },
+    { label: dict.nav.impact, href: `/${lang}#impact` },
+    { label: dict.nav.blog, href: `/${lang}#blog` },
+    { label: dict.nav.contact, href: `/${lang}#contact` },
   ];
 
   return (

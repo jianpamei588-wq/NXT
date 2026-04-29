@@ -1,7 +1,6 @@
 import { getDictionary, Locale } from "@/lib/dictionary";
 import stories from "@/data/stories.json";
 import { Section } from "@/components/ui/Section";
-import { Card, CardContent } from "@/components/ui/Card";
 
 export async function generateStaticParams() {
   return [{ lang: "en" }, { lang: "hi" }];

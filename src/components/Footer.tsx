@@ -1,12 +1,58 @@
+"use client";
+
 import Link from "next/link";
 import { Facebook, Twitter, Instagram, Mail } from "lucide-react";
+import { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
+import { cn } from "@/lib/utils";
+import { Dictionary } from "@/lib/dictionary";
 
 type FooterProps = {
   lang: string;
-  dict: any;
+  dict: Dictionary;
 };
 
 export default function Footer({ lang, dict }: FooterProps) {
+  const form = useRef<HTMLFormElement>(null);
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
+
+  async function handleNewsletterSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    if (!form.current) return;
+
+    setStatus("submitting");
+
+    // Add hidden fields for consistency with the template
+    const emailInput = form.current.querySelector('input[name="from_email"]') as HTMLInputElement;
+    const combinedMessage = `Newsletter Subscription Request\nEmail: ${emailInput.value}`;
+    
+    const messageInput = document.createElement("input");
+    messageInput.type = "hidden";
+    messageInput.name = "message";
+    messageInput.value = combinedMessage;
+    form.current.appendChild(messageInput);
+
+    try {
+      await emailjs.sendForm(
+        "service_tgojfm6",
+        "template_9la6u1d",
+        form.current,
+        "vcUSvSSjaA_DWGbPn"
+      );
+      setStatus("success");
+      form.current.reset();
+      setTimeout(() => setStatus("idle"), 3000);
+    } catch (error) {
+      console.error("EmailJS Error:", error);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
+    } finally {
+      if (form.current && messageInput.parentNode === form.current) {
+        form.current.removeChild(messageInput);
+      }
+    }
+  }
+
   return (
     <footer className="w-full border-t bg-background py-12 md:py-16">
       <div className="container grid gap-8 md:grid-cols-2 lg:grid-cols-4">
@@ -58,27 +104,36 @@ export default function Footer({ lang, dict }: FooterProps) {
             <Link href="https://instagram.com" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Instagram">
               <Instagram size={20} />
             </Link>
-             <Link href="mailto:contact@nextbuildx.org" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
+             <Link href="mailto:hello@nextbuildx.org" className="text-muted-foreground hover:text-primary transition-colors" aria-label="Email">
               <Mail size={20} />
             </Link>
           </div>
           <div className="space-y-2">
             <p className="text-xs text-muted-foreground">{dict.footer.newsletter}</p>
-            <form className="flex gap-2" action="https://formspree.io/f/placeholder" method="POST">
+            <form ref={form} onSubmit={handleNewsletterSubmit} className="flex gap-2">
+                <input type="hidden" name="form_type" value="Newsletter Subscription" />
+                <input type="hidden" name="subject" value="Newsletter Subscription" />
+                <input type="hidden" name="from_name" value="Newsletter Subscriber" />
                 <input 
                     type="email" 
-                    name="email"
+                    name="from_email"
                     placeholder="Email" 
                     className="flex h-8 w-full rounded-md border border-input bg-transparent px-3 py-1 text-sm shadow-sm transition-colors file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:cursor-not-allowed disabled:opacity-50"
                     required
                 />
                 <button 
                     type="submit"
-                    className="inline-flex h-8 items-center justify-center rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                    disabled={status === "submitting" || status === "success"}
+                    className={cn(
+                        "inline-flex h-8 items-center justify-center rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground shadow hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50",
+                        status === "success" && "bg-green-600",
+                        status === "error" && "bg-red-600"
+                    )}
                 >
-                    Sub
+                    {status === "submitting" ? "..." : status === "success" ? "✓" : "Sub"}
                 </button>
             </form>
+            {status === "success" && <p className="text-[10px] text-green-600">Subscribed!</p>}
           </div>
         </div>
       </div>

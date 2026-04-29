@@ -1,10 +1,10 @@
 import Link from "next/link";
-import { ArrowRight, Heart, HardHat, FileText } from "lucide-react";
+import { Heart, HardHat, FileText } from "lucide-react";
 import { Section } from "./ui/Section";
-import { cn } from "@/lib/utils";
+import { Dictionary } from "@/lib/dictionary";
 
 type HeroProps = {
-  dict: any;
+  dict: Dictionary;
   lang: string;
 };
 
@@ -37,7 +37,7 @@ export default function Hero({ dict, lang }: HeroProps) {
             {dict.hero.cta_volunteer}
           </Link>
            <Link
-            href={`/${lang}/contact`}
+            href={`/${lang}/contact?type=suggest`}
              className="inline-flex h-12 items-center justify-center rounded-md border border-white/30 hover:bg-white/10 text-primary-foreground px-8 text-sm font-medium transition-colors"
           >
              <FileText className="mr-2 h-4 w-4" />

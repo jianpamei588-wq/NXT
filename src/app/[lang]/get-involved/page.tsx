@@ -1,5 +1,6 @@
 import { getDictionary, Locale } from "@/lib/dictionary";
 import VolunteerForm from "@/components/VolunteerForm";
+import DonationPledgeForm from "@/components/DonationPledgeForm";
 import { Section } from "@/components/ui/Section";
 import { Card, CardContent } from "@/components/ui/Card";
 import { Heart, Coins, Landmark } from "lucide-react";
@@ -71,9 +72,7 @@ export default async function GetInvolvedPage({
                     </div>
                 </div>
 
-                <button className="w-full h-12 rounded-md bg-accent text-accent-foreground font-bold shadow hover:bg-accent/90 transition-colors">
-                    Proceed to Payment Gateway (Placeholder)
-                </button>
+                <DonationPledgeForm dict={dict} />
             </div>
 
             {/* Volunteer Section */}

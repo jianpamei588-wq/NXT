@@ -2,6 +2,8 @@
 
 export type Locale = "en" | "hi";
 
+export type Dictionary = typeof dictionaries.en;
+
 const dictionaries = {
   en: {
     nav: {
@@ -119,4 +121,4 @@ const dictionaries = {
   },
 };
 
-export const getDictionary = (lang: Locale) => dictionaries[lang];
+export const getDictionary = (lang: Locale): Dictionary => dictionaries[lang] || dictionaries.en;
